@@ -2,13 +2,13 @@
 #include <math.h>
 #include <limits.h>
 
-int get_values (int matrix[][10]){
-    // printf("Enter the matrix values: ");
+int get_values (int matrix[10][10]){
+    //printf("Enter the matrix values: ");
 
     int val;
     for (int i=0; i<10; i++){
         for (int j=0; j<10; j++){
-            if(scanf("%d", &val) == 1){
+            if(scanf(" %d", &val) == 1){
                 matrix[i][j] = val;
             }
         }
@@ -16,7 +16,7 @@ int get_values (int matrix[][10]){
     return 0;
 }
 
-int is_path_exists (int matrix[][10], int a, int b, int visited[]){
+int is_path_exists (int matrix[10][10], int a, int b, int visited[]){
     //validation check:
     if(a<0 || a>=10 || b<0 || b>=10){
         return 0;
@@ -25,6 +25,9 @@ int is_path_exists (int matrix[][10], int a, int b, int visited[]){
     if(matrix[a][b] > 0){
         return 1;
     }
+
+    //debug print:
+    printf("got here");
 
     //DFS algorithm:
     visited[a] = 1;
@@ -38,7 +41,7 @@ int is_path_exists (int matrix[][10], int a, int b, int visited[]){
     return 0;
 }
 
-int shortest_path(int matrix[][10], int a, int b){
+int shortest_path(int matrix[10][10], int a, int b){
     //If a is b:
     if(a==b){
         return 0;
@@ -66,9 +69,11 @@ int shortest_path(int matrix[][10], int a, int b){
             }
         }
     }
-
-    return tmp[a][b];
-
+    if(tmp[a][b] != INT_MAX){
+       return tmp[a][b];
+    }
+    return -1;
+    
 }
 
 

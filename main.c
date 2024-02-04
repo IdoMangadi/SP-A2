@@ -1,12 +1,14 @@
 #include <stdio.h>
 #include <math.h>
+#include "my_mat.h"
 
 int main(){
 
     int matrix[10][10];
+    int i, j, res;
 
     char user_input;
-    scanf("%c", &user_input);
+    scanf(" %c", &user_input);
 
     while(user_input != 'D'){
         if (user_input == 'A'){
@@ -14,16 +16,22 @@ int main(){
         }
 
         if (user_input == 'B'){
-            int i, j;
-            scanf("%d%d",i, j);
-            is_path_exists(matrix, i, j);
+            scanf(" %d %d", &i, &j);
+            res = is_path_exists(matrix, i, j);
+            if(res == 1){
+                printf("True");
+            }
+            else{
+                printf("False");
+            }
         }
 
         if (user_input == 'C'){
-            int i, j;
-            scanf("%d%d",i, j);
-            shortest_path(matrix, i, j);
+            scanf(" %d %d",&i, &j);
+            res = shortest_path(matrix, i, j);
+            printf("%d", res);
         }
+        scanf("%c", &user_input);
     }
 
     return 0;

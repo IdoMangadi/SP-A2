@@ -1,7 +1,7 @@
 /**
  * Function that gets the matrix values from the user:
 */
-int get_values(int *matrix[][10]);
+int get_values(int matrix[][10]);
 
 /**
  * Function that uses DFS to check whether there is a path from vertix 'a' to vertix 'b'.
