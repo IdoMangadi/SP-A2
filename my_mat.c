@@ -2,6 +2,8 @@
 #include <math.h>
 #include <limits.h>
 
+
+//Activated when user input is: A
 int get_values (int matrix[10][10]){
     //printf("Enter the matrix values: ");
 
@@ -16,6 +18,8 @@ int get_values (int matrix[10][10]){
     return 0;
 }
 
+
+//Activated when user input is: B
 int is_path_exists (int matrix[10][10], int a, int b, int visited[]){
     
     //validation check:
@@ -39,20 +43,22 @@ int is_path_exists (int matrix[10][10], int a, int b, int visited[]){
     return 0;
 }
 
+
+//Activated when user input is: C
 int shortest_path(int matrix[10][10], int a, int b){
     //If a is b:
     if(a==b){
-        return 0;
+        return -1;
     }
 
-    //Copy the original matrix to temporary one
+    //Copy the original matrix to temporary one:
     int tmp[10][10];
     for(int i=0; i<10; i++){
         for(int j=0; j<10; j++){
             tmp[i][j] = matrix[i][j];
-            //If there is no direct edge between the two vertixs
+            //If there is no direct edge between the two vertixs:
             if(tmp[i][j] == 0 && i != j){
-                tmp[i][j] = INT_MAX;
+                tmp[i][j] = -1;
             }
         }
     }
@@ -61,9 +67,15 @@ int shortest_path(int matrix[10][10], int a, int b){
     for(int k=0; k<10; k++){
         for(int i=0; i<10; i++){
             for(int j=0; j<10; j++){
-                int ori1 = tmp[i][j];
-                int ori2 = tmp[i][k]+tmp[k][j];
-                tmp[i][j] = (ori1 < ori2) ? ori1 : ori2;
+                if(tmp[i][j] == -1){
+                    tmp[i][j] = tmp[i][k]+tmp[k][j];
+                    continue;
+                }
+                if(tmp[i][k]+tmp[k][j] == -1){
+                    tmp[i][j] = tmp[i][j];
+                    continue;
+                }
+                tmp[i][j] = (tmp[i][j] < tmp[i][k]+tmp[k][j]) ? tmp[i][j] : tmp[i][k]+tmp[k][j];
             }
         }
     }
