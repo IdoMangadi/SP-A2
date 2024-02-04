@@ -17,6 +17,7 @@ int get_values (int matrix[10][10]){
 }
 
 int is_path_exists (int matrix[10][10], int a, int b, int visited[]){
+    
     //validation check:
     if(a<0 || a>=10 || b<0 || b>=10){
         return 0;
@@ -25,9 +26,6 @@ int is_path_exists (int matrix[10][10], int a, int b, int visited[]){
     if(matrix[a][b] > 0){
         return 1;
     }
-
-    //debug print:
-    printf("got here");
 
     //DFS algorithm:
     visited[a] = 1;
