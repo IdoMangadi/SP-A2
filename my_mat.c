@@ -58,7 +58,7 @@ int shortest_path(int matrix[10][10], int a, int b){
             tmp[i][j] = matrix[i][j];
             //If there is no direct edge between the two vertixs:
             if(tmp[i][j] == 0 && i != j){
-                tmp[i][j] = -1;
+                tmp[i][j] = INT_MAX;
             }
         }
     }
@@ -71,18 +71,14 @@ int shortest_path(int matrix[10][10], int a, int b){
                     tmp[i][j] = tmp[i][k]+tmp[k][j];
                     continue;
                 }
-                if(tmp[i][k]+tmp[k][j] == -1){
-                    tmp[i][j] = tmp[i][j];
+                if((tmp[i][k] == -1) || (tmp[k][j] == -1)){
                     continue;
                 }
                 tmp[i][j] = (tmp[i][j] < tmp[i][k]+tmp[k][j]) ? tmp[i][j] : tmp[i][k]+tmp[k][j];
             }
         }
     }
-    if(tmp[a][b] != INT_MAX){
-       return tmp[a][b];
-    }
-    return -1;
+    return tmp[a][b];
     
 }
 
