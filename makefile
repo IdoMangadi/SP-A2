@@ -2,7 +2,7 @@ FLSGS = -Wall -g
 
 .PHONY: all clean
 
-all: my_mat.a mainprog
+all: my_mat.a connections
 
 # Generating library:
 my_mat.o: my_mat.c my_mat.h
@@ -16,9 +16,9 @@ my_mat.a: my_mat.o
 main.o: main.c my_mat.h
 	gcc ${FLSGS} -c main.c -o main.o
 
-mainprog: main.o my_mat.a
-	gcc ${FLSGS} main.o my_mat.a -o mainprog
+connections: main.o my_mat.a
+	gcc ${FLSGS} main.o my_mat.a -o connections
 
 # Cleaning:
 clean:
-	rm -f mainprog *.a *.o
+	rm -f connections *.a *.o
