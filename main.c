@@ -6,7 +6,6 @@ int main(){
 
     int matrix[10][10];
     int i, j, res;
-    int visited[10] = {0};
 
     char user_input;
     scanf(" %c", &user_input);
@@ -19,9 +18,15 @@ int main(){
 
         if (user_input == 'B'){
             scanf(" %d %d",&i, &j);
-            res = is_path_exists(matrix, i, j, visited);
-            if(res == 1){
-                printf("True\n");
+            if(i != j){
+                int visited[10] = {0};
+                res = is_path_exists(matrix, i, j, visited);
+                if(res == 1){
+                    printf("True\n");
+                }
+                else{
+                    printf("False\n");
+                }
             }
             else{
                 printf("False\n");

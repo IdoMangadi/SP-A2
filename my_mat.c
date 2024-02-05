@@ -67,16 +67,20 @@ int shortest_path(int matrix[10][10], int a, int b){
     for(int k=0; k<10; k++){
         for(int i=0; i<10; i++){
             for(int j=0; j<10; j++){
-                if(tmp[i][j] == -1){
+                if(tmp[i][k] == INT_MAX || tmp[k][j] == INT_MAX){
+                    continue;
+                }
+                if(tmp[i][j] == INT_MAX){
                     tmp[i][j] = tmp[i][k]+tmp[k][j];
                     continue;
                 }
-                if((tmp[i][k] == -1) || (tmp[k][j] == -1)){
-                    continue;
-                }
-                tmp[i][j] = (tmp[i][j] < tmp[i][k]+tmp[k][j]) ? tmp[i][j] : tmp[i][k]+tmp[k][j];
+                //Non of them equals INT_MAX:
+                tmp[i][j] = (tmp[i][j] <= tmp[i][k]+tmp[k][j]) ? tmp[i][j] : tmp[i][k]+tmp[k][j];
             }
         }
+    }
+    if(tmp[a][b] == INT_MAX){
+        return -1;
     }
     return tmp[a][b];
     
