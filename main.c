@@ -4,7 +4,7 @@
 
 int main(){
 
-    int matrix[10][10];
+    int matrix[ROWS][COLS];
     int i, j, res;
     char user_input;
     scanf(" %c", &user_input);
