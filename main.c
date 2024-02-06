@@ -7,8 +7,9 @@ int main(){
     int matrix[10][10];
     int i, j, res;
     char user_input;
+    scanf(" %c", &user_input);
 
-    while(scanf(" %c", &user_input) != EOF && user_input != 'D' && user_input != '\n'){
+    while(user_input != 'D'){
 
         if (user_input == 'A'){
             get_values(matrix);
