@@ -78,13 +78,12 @@ int main(){
     //Printing:
     printf("Maximum profit: %d\n", max_values_sum);
 
-    printf("Selected items: ");
+    printf("Selected items:");
     for(int i=0; i<ITEMS_AMOUNT; i++){
         if(selected_bool[i] == 1){
-            printf("%s ", items[i]);
+            printf(" %s", items[i]);
         }
     }
-    printf("\n");
 
     return 0;
 }
